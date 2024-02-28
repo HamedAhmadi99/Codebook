@@ -20,78 +20,83 @@ The Wave VII Maghreb dataset derives from Arab Barometer's Wave VII survey, focu
 #### Sources and Methodology:
 Data is sourced from Arab Barometer's Wave VII survey, renowned for its robust methodology ensuring national representativeness and reliability. Our dataset has undergone extensive cleaning and coding, aligning with Arab Barometer's technical reports to maintain data integrity and reliability. Surveys were conducted via PAPI, CAPI, and phone interviews, employing multistage probability sampling.
 
-#### Note on Missing Values:
-Missing values are noted where responses were not provided, or the data was not applicable. These are coded as 'NA' within the dataset and should be considered during analysis to avoid skewing results.
 
-#### Itemized Presentation of Variables:  
+###
 
-**Variable: Country Name (c_name)**  
-- Type: Character  
+**Country Name**  
+- Variable name: c_name  
+- Type: Character      
 - Description: Country of the respondent's residence  
 - Values: Algeria, Mauritania, Morocco, Tunisia  
 
-
-**Variable: Source Indication (source)**  
-- Type: Factor  
+**Source Indication**   
+- Variable name: source  
+- Type: Character  
 - Description: Method of data collection  
+- Values: "Arab Barometer Wave VII"  
+
+**Respondent Identifier**  
+- Variable name: r_id  
+- Type: Numeric    
+- Description: Unique ID for each respondent    
+
+**Interview Year**    
+- Variable name: r_country  
+- Type: Numeric   
+- Description: Year of the interview  
+
+
+**Interview Month**   
+- Variable name: r_month  
+- Type: Numeric   
+- Description: Month of the interview   
+
+
+**Gender of Respondent**    
+- Variable name: r_female  
+- Type: Numeric    
+- Description: If the respondent is female    
+- Values and Frequency:    
+  0 = No  
+  1 = Yes
+```{r, echo=FALSE}
+knitr::kable(table(df$r_female), caption = "Frequency of Gender",
+                          col.names = c("Value", "Frequency"))
+```
+
+
+**Political Interest**  
+- Variable name: p_interest  
+- Type: Factor  
+- Description: Respondent's interest in politics   
+- Values and Frequency:     
+
+```{r, echo=FALSE}
+df$p_interest <- factor(df$p_interest, levels = c("Very uninterested", "Uninterested", "Interested", "Very interested"))
+knitr::kable(table(df$p_interest), 
+             caption = "Frequency of Political Interest Levels",
+             col.names = c("Value", "Frequency"))
+```
+
+
+**Economic Evaluations**  
+- Variable name: p_economy  
+- Type: Factor  
+- Description: Respondent's view of the economy.  
 - Values and Frequency:  
 
-**Variable: Respondent Identifier (r_id)**  
-
-Type: Numeric  
-Description: Unique ID for each respondent.  
-
-**Variable: Interview Year (r_year)**  
-
-Type: Numeric  
-Description: Year of the interview.  
-Summary Statistics:  
-
-
-**Variable: Interview Month (r_month)**  
-
-Type: Numeric  
-Description: Month of the interview.  
-
-
-**Variable: Gender of Respondent (r_female)**  
-
-Type: Factor  
-Description: Gender of the respondent.  
-Values and Frequency:  
-
 ```{r, echo=FALSE}
-knitr::kable(table(df$r_female), caption = "Frequency of Gender")
+df$p_interest <- factor(df$p_economy, levels = c("Very bad", "Bad", "Good", "Very good"))
+knitr::kable(table(df$p_economy), 
+             caption = "Economic Evaluations",
+             col.names = c("Value", "Frequency"))
 ```
 
 
-**Variable: Political Interest (p_interest)**  
-
-Type: Factor  
-Description: Respondent's interest in politics   
-Values and Frequency:     
-
-```{r, echo=FALSE}
-knitr::kable(table(df$p_interest), caption = "Frequency of Political Interest Levels")
-```
-
-
-**Variable: Economic Evaluations (p_economy)**  
-
-Type: Factor  
-Description: Respondent's view of the economy.  
-Values and Frequency:  
-
-```{r, echo=FALSE}
-knitr::kable(table(df$p_economy), caption = "Frequency of Economic Evaluations")
-```
-
-
-
-**Variables: Satisfaction with Democracy (Q516_1 to Q516_4)**  
-
-Type: Factor  
-Description: Respondents' agreement or disagreement with statements about the performance and characteristics of democratic systems.
+**Measures of Democracy**    
+- Variable names:  (Q516_1 to Q516_4)  
+- Type: Factor  
+- Description: Respondents' level of agreement or disagreement with statements about the performance and characteristics of democratic systems.
 
 Q516_1: "Under a democratic system, the country's economic performance is weak."  
 Q516_2: "Democratic regimes are indecisive and full of problems."  
@@ -107,5 +112,12 @@ knitr::kable(sapply(satisfaction_with_democracy, table), caption = "Frequency of
 
 ```
 
+#### Note on Missing Values:
+Missing values are noted where responses were not provided, or the data was not applicable. These are coded as 'NA' within the dataset and should be considered during analysis to avoid skewing results.
 
+#### Data Usage and Interpretation:
+Researchers should consult the original Arab Barometer documentation to understand sampling and fieldwork procedures fully. This dataset's quality and coding adhere to Arab Barometer's standards, and thus, their documentation is crucial for accurate data interpretation.
+
+#### Acknowledgments:
+This dataset builds upon Arab Barometer's meticulous survey efforts in the MENA region. We thank them for setting a high standard in data collection and transparency, which has been foundational in creating the Wave VII Maghreb dataset.
 

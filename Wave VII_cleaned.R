@@ -16,7 +16,7 @@ df = df|>
     )
   )
 
-df$c_name
+table(df$c_name)
 
 # Add a new variable 'source' with a constant value
 df = df |>
@@ -41,19 +41,17 @@ df = df |>
   )
 
 
-df$r_year
-df$r_month
+table(df$r_year)
+table(df$r_month)
 
-
-
-#r_swt: survey weight
 
 
 # Create 'r_female' as a binary indicator for female
 df = df |>
   mutate(r_female = if_else(Q1002 == 2, 1, 0))
 
-df$r_female
+
+table(df$r_female)
 
 
 
@@ -83,10 +81,10 @@ df <- df %>%
 
 
 
-table(df$p_interest, useNA = "ifany")
+table(df$p_interest)
 
-df$p_interest
 
+# Clean, reverse order, change to factor variable and rename Q101 to p_economy
 
 
 df <- df %>%
@@ -111,15 +109,9 @@ df <- df %>%
     )
   )
 
-table(df$p_economy, useNA = "ifany")
+table(df$p_economy)
 
 df$p_economy
-
-
-df$Q516_1
-df$Q516_2
-df$Q516_3
-df$Q516_4
 
 
 
@@ -163,25 +155,25 @@ df <- df %>%
     Q516_1 = factor(
       Q516_1_num,
       levels = c(1, 2, 3, 4),
-      labels = c("Strongly disagree", "Disagree", "Agree", "Strongly disagree")
+      labels = c("Strongly disagree", "Disagree", "Agree", "Strongly agree")
     ),
     Q516_2 = factor(
       Q516_2_num,
       levels = c(1, 2, 3, 4),
-      labels = c("Strongly disagree", "Disagree", "Agree", "Strongly disagree")
+      labels = c("Strongly disagree", "Disagree", "Agree", "Strongly agree")
     ),
     Q516_3 = factor(
       Q516_3_num,
       levels = c(1, 2, 3, 4),
-      labels = c("Strongly disagree", "Disagree", "Agree", "Strongly disagree")
+      labels = c("Strongly disagree", "Disagree", "Agree", "Strongly agree")
     ),
     Q516_4 = factor(
       Q516_4_num,
       levels = c(1, 2, 3, 4),
-      labels = c("Strongly disagree", "Disagree", "Agree", "Strongly disagree")
+      labels = c("Strongly disagree", "Disagree", "Agree", "Strongly agree")
     )
   ) %>%
-  select(-matches("_num$"))  # Remove the intermediate numeric variables
+  select(-matches("_num$"))  
 
 
 table(df$Q516_1)
@@ -197,8 +189,17 @@ table(df$Q516_4)
 # Create a new dataframe with variables in the specified order
 cleaned_df <- df[, c("c_name", "source", "r_id", "r_year", "r_month", "r_female", "p_interest", "p_economy", "Q516_1", "Q516_2", "Q516_3", "Q516_4")]
 
+# Save as .CSV
+write.csv(cleaned_df, file = 'Wave_VII_Maghreb.csv', row.names = FALSE)
 
- summary(cleaned_df$r_year)
+
+# save as .Rdata
+save(cleaned_df, file = "Wave_VII_Maghreb.RData")
+
+
+ Maghreb = read_csv("Wave_VII_Maghreb.csv")
+ 
+
 
 
 

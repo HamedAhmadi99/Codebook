@@ -102,7 +102,7 @@ knitr::kable(table(df$p_economy),
 - Values and Frequency:  
 
 ```{r, echo=FALSE}
-df$Econ_Dem <- factor(df$Econ_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly Agree"))
+df$Econ_Dem <- factor(df$Econ_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly agree"))
 
 knitr::kable(table(df$Econ_Dem), 
              col.names = c("Value", "Frequency"), 
@@ -117,7 +117,7 @@ knitr::kable(table(df$Econ_Dem),
 - Values and Frequency:   
 
 ```{r, echo=FALSE}
-df$Dec_Dem <- factor(df$Dec_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly Agree"))
+df$Dec_Dem <- factor(df$Dec_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly agree"))
 
 knitr::kable(table(df$Dec_Dem), 
              col.names = c("value", "Frequency"), 
@@ -131,7 +131,7 @@ knitr::kable(table(df$Dec_Dem),
 - Values and Frequency:   
 
 ```{r, echo=FALSE}
-df$Eff_Dem <- factor(df$Eff_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly Agree"))
+df$Eff_Dem <- factor(df$Eff_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly agree"))
 
 knitr::kable(table(df$Eff_Dem), 
              col.names = c("Value", "Frequency"), 
@@ -146,7 +146,7 @@ knitr::kable(table(df$Eff_Dem),
 - Values and Frequency:   
 
 ```{r, echo=FALSE}
-df$Comp_Dem <- factor(df$Comp_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly Agree"))
+df$Comp_Dem <- factor(df$Comp_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly agree"))
 
 knitr::kable(table(df$Comp_Dem), 
              col.names = c("Value", "Frequency"), 

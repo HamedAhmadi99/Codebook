@@ -1,4 +1,4 @@
-"c_name","source","r_id","r_year","r_month","r_female","p_interest","p_economy","Q516_1","Q516_2","Q516_3","Q516_4"
+"c_name","source","r_id","r_year","r_month","r_female","p_interest","p_economy","Econ_Dem","Dec_Dem","Eff_Dem","Comp_Dem"
 "Tunisia","Arab Barometer Wave VII",210001,2021,10,0,"Very uninterested","Very bad",NA,NA,NA,NA
 "Tunisia","Arab Barometer Wave VII",210002,2021,10,0,"Very interested","Very bad","Strongly disagree","Strongly agree","Strongly agree","Strongly agree"
 "Tunisia","Arab Barometer Wave VII",210003,2021,11,0,"Very interested","Good","Agree","Strongly disagree","Disagree","Disagree"

@@ -93,23 +93,64 @@ knitr::kable(table(df$p_economy),
 ```
 
 
-**Measures of Democracy**    
-- Variable names:  (Q516_1 to Q516_4)  
+**Measures of Democracy** 
+
+**Economic Performance Under Democracy**  
+- Variable names: Econ_Dem   
 - Type: Factor  
-- Description: Respondents' level of agreement or disagreement with statements about the performance and characteristics of democratic systems.
-
-Q516_1: "Under a democratic system, the country's economic performance is weak."  
-Q516_2: "Democratic regimes are indecisive and full of problems."  
-Q516_3: "Democratic systems are not effective at maintaining order and stability."  
-Q516_4: "Democratic systems may have problems, yet they are better than other systems."  
-
-Values and Frequency:  
+- Description: Agreement with the statement "Under a democratic system, the country's economic performance is weak."  
+- Values and Frequency:  
 
 ```{r, echo=FALSE}
+df$Econ_Dem <- factor(df$Econ_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly Agree"))
 
-satisfaction_with_democracy <- df[, grep("Q516", names(df))]
-knitr::kable(sapply(satisfaction_with_democracy, table), caption = "Frequency of Satisfaction with Democracy")
+knitr::kable(table(df$Econ_Dem), 
+             col.names = c("Value", "Frequency"), 
+             caption = "Respondents' Agreement on Economic Performance Under Democracy")
 
+```
+
+**Decisiveness of Democratic Regimes**  
+- Variable names: Dec_Dem   
+- Type: Factor  
+- Description: Agreement with the statement "Democratic regimes are indecisive and full of problems."    
+- Values and Frequency:   
+
+```{r, echo=FALSE}
+df$Dec_Dem <- factor(df$Dec_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly Agree"))
+
+knitr::kable(table(df$Dec_Dem), 
+             col.names = c("value", "Frequency"), 
+             caption = "Respondents' Agreement on Decisiveness of Democratic Regimes")
+```
+
+**Effectiveness of Democratic Systems**  
+- Variable names: Eff_Dem   
+- Type: Factor  
+- Description: Agreement with the statement "Democratic systems are not effective at maintaining order and stability."     
+- Values and Frequency:   
+
+```{r, echo=FALSE}
+df$Eff_Dem <- factor(df$Eff_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly Agree"))
+
+knitr::kable(table(df$Eff_Dem), 
+             col.names = c("Value", "Frequency"), 
+             caption = "Respondents' Agreement on Effectiveness of Democratic Systems")
+```
+
+
+**Comparative Advantage of Democracy**  
+- Variable names: Comp_Dem     
+- Type: Factor  
+- Description: Agreement with the statement "Democratic systems may have problems, yet they are better than other systems."  
+- Values and Frequency:   
+
+```{r, echo=FALSE}
+df$Comp_Dem <- factor(df$Comp_Dem, levels = c("Strongly disagree", "Disagree", "Agree", "Strongly Agree"))
+
+knitr::kable(table(df$Comp_Dem), 
+             col.names = c("Value", "Frequency"), 
+             caption = "Respondents' Agreement on Comparative Advantage of Democracy")
 ```
 
 #### Note on Missing Values:

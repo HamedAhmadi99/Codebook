@@ -181,13 +181,21 @@ table(df$Q516_2)
 table(df$Q516_3)
 table(df$Q516_4)
 
+# rename variables
+df <- df %>%
+  rename(
+    Econ_Dem = Q516_1,
+    Dec_Dem = Q516_2,
+    Eff_Dem = Q516_3,
+    Comp_Dem = Q516_4
+  )
 
 
 
 
 
 # Create a new dataframe with variables in the specified order
-cleaned_df <- df[, c("c_name", "source", "r_id", "r_year", "r_month", "r_female", "p_interest", "p_economy", "Q516_1", "Q516_2", "Q516_3", "Q516_4")]
+cleaned_df <- df[, c("c_name", "source", "r_id", "r_year", "r_month", "r_female", "p_interest", "p_economy", "Econ_Dem", "Dec_Dem", "Eff_Dem", "Comp_Dem")]
 
 # Save as .CSV
 write.csv(cleaned_df, file = 'Wave_VII_Maghreb.csv', row.names = FALSE)
